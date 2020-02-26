@@ -38,9 +38,12 @@ namespace WebApplication1.Models
     public class DiasIndicadorEvaLista
     {
         public string UnidadeNome { get; set; }
+        public IEnumerable<VolumeRealizado> VolumeRealizados { get; set; }
         public IEnumerable<Tipo> Tipo { get; set; }
-        
-        
+        public Nullable<decimal> MediaAcumuladaAbate { get; set; }
+        public Nullable<decimal> MediaAcumuladaDesossa { get; set; }
+
+
     }
 
     public class Tipo
@@ -48,6 +51,7 @@ namespace WebApplication1.Models
         public string Tipos { get; set; }
         public string UnidadeMedida { get; set; }
         public IEnumerable<DiaValor> DiaValor { get; set; }
+        
 
     }
 
@@ -55,6 +59,29 @@ namespace WebApplication1.Models
     {
         public DateTime Data { get; set; }
         public decimal Valor { get; set; }
+        public Nullable<decimal> ValorVolumeRealizadoAbate { get; set; }
+        public Nullable<decimal> ValorVolumeRealizadoDesossa { get; set; }
 
+    }
+
+    public class VolumeRealizado
+    {
+        public DateTime DataRealizado { get; set; }
+        public Nullable<decimal> RealizadoAbate { get; set; }
+        public Nullable<decimal> RealizadoDesossa { get; set; }
+    }
+
+    public class RealizadoAbate
+    {
+        public string UnidadeNome { get; set; }
+        public DateTime Data { get; set; }
+        public Nullable<decimal> Valor { get; set; }
+    }
+
+    public class RealizadoDesossa
+    {
+        public string UnidadeNome { get; set; }
+        public DateTime Data { get; set; }
+        public Nullable<decimal> Valor { get; set; }
     }
 }

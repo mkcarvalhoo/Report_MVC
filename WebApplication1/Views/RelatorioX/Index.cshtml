@@ -18,6 +18,10 @@
             Unidade
         </th>
         <th>
+            @*@Html.DisplayNameFor(model => model.Estado)*@
+            Média Acumulada
+        </th>
+        <th>
             @*@Html.DisplayNameFor(model => model.ListaCidades.First().Nome)*@
             Tipo
         </th>
@@ -66,17 +70,48 @@
 
     @foreach (var estado in ViewBag.ListaIndicadorEva)
     {
-        int qtdeCidade = 4;
+        int qtdeCidade = 5;
         //string nomeEstado = "";
 
         <td rowspan="@(qtdeCidade)">
             @estado.UnidadeNome
         </td>
 
+
+        <tr>
+            <td>
+                @estado.MediaAcumuladaAbate
+                <br>
+                @estado.MediaAcumuladaDesossa
+            </td>
+            <td>
+                Volume
+            </td>
+
+            <td>
+                Abate
+                <br>
+                Desossa
+                <br>
+                %
+            </td>
+            @foreach (var item in estado.VolumeRealizados)
+            {
+                <td>
+                    @item.RealizadoAbate
+                    <br>
+                    @item.RealizadoDesossa
+                </td>
+            }
+        </tr>
+
+
         foreach (var cidade in estado.Tipo)
         {
             <tr>
-
+                <td>
+                    Média 0
+                </td>
                 <td>
                     @cidade.Tipos
                 </td>
@@ -88,11 +123,15 @@
                     <br>
                     %
                 </td>
-                
+
                 @foreach (var dia in cidade.DiaValor)
                 {
                     <td>
                         @dia.Valor
+                        <br>
+                        @dia.ValorVolumeRealizadoAbate
+                        <br>
+                        @dia.ValorVolumeRealizadoDesossa
                     </td>
                 }
             </tr>
